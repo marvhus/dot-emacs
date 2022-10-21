@@ -50,7 +50,7 @@
 (require 'drag-stuff)
 (drag-stuff-mode t)
 (drag-stuff-global-mode 1)
-(drag-stuff-Keybinds-define)
+(drag-stuff-define-keys)
 
 ;; keys
 
