@@ -1,9 +1,9 @@
 ;; Set up package.el to work with MELPA
-;;(require 'package)
-;;(add-to-list 'package-archives
-;;             '("melpa" . "https://melpa.org/packages/"))
-;;(package-initialize)
-;;(package-refresh-contents)
+;(require 'package)
+;(add-to-list 'package-archives
+;             '("melpa" . "https://melpa.org/packages/"))
+;(package-initialize)
+;(package-refresh-contents)
 
 ;;
 ;; Packages
@@ -45,22 +45,14 @@
 (require 'odin-mode)
 (add-to-list 'auto-mode-alist '("\\.odin\\'" . odin-mode))
 
-;; move line up
-(defun move-line-up ()
-  (interactive)
-  (transpose-lines 1)
-  (previous-line 2))
+;; Drag Stuff
+(add-to-list 'load-path "~/.emacs.d/drag-stuff/")
+(require 'drag-stuff)
+(drag-stuff-mode t)
+(drag-stuff-global-mode 1)
+(drag-stuff-Keybinds-define)
 
-;; move line down
-(defun move-line-down ()
-  (interactive)
-  (next-line 1:)
-  (transpose-lines 1)
-  (previous-line 1))
-
-;; Keybinds
-(global-set-key [M-up] 'move-line-up)
-(global-set-key [M-down] 'move-line-down)
+;; keys
 
 (global-set-key [C-return] 'save-buffer)
 
