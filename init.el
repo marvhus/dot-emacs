@@ -139,8 +139,6 @@
 
 ;;;;;;;;;;;;
 ;; https://github.com/rexim/gruber-darker-theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/gruber-darker-theme")
-;; use M-x customize-themes to change theme
 (load-theme 'gruber-darker t)
 ;;;;;;;;;;;
 
