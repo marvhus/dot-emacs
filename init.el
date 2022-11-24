@@ -139,6 +139,20 @@
 
 ;;;;;;;;;;;;
 ;; https://github.com/rexim/gruber-darker-theme
+(require 'dash)
+(require 's)
+
+;; add all themes to custom-theme-load-path
+(-each
+   (-map
+      (lambda (item)
+      (format "~/.emacs.d/elpa/%s" item))
+   (-filter
+      (lambda (item) (s-contains? "theme" item))
+      (directory-files "~/.emacs.d/elpa/")))
+   (lambda (item)
+      (add-to-list 'custom-theme-load-path item)))
+
 (load-theme 'gruber-darker t)
 ;;;;;;;;;;;
 
