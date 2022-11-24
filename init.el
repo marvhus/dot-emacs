@@ -1,13 +1,16 @@
 ;; Set up package.el to work with MELPA
-;(require 'package)
-;(add-to-list 'package-archives
-;             '("melpa" . "https://melpa.org/packages/"))
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
 ;(package-initialize)
 ;(package-refresh-contents)
 
 ;;
 ;; Packages
 ;;
+
+(add-to-list 'load-path "~/.emacs.d/use-package")
+(require 'use-package)
 
 ;; auto-complate
 ;;(ac-config-default)
@@ -26,12 +29,27 @@
 ;; company
 (add-hook 'after-init-hook 'global-company-mode)
 
+;; helm
+(require 'helm)
+(require 'helm-cmd-t)
+(require 'helm-git-grep)
+(require 'helm-ls-git)
+(require 'helm-org)
+
+;; ox-hugo
+(use-package ox-hugo
+  :ensure t   ;Auto-install the package from Melpa
+  :pin melpa  ;`package-archives' should already have ("melpa" . "https://melpa.org/packages/")
+  :after ox)
+
+
 ;;
 ;; Settings
 ;;
 (setq org-image-actual-width nil)
 (setq calendar-week-start-day 1)
 (setq column-number-mode t)
+(setq scroll-bar-mode 0)
 (setq backup-directory-alist `(("." . "~/.saves")))
 
 ;; server
@@ -53,6 +71,22 @@
 (drag-stuff-define-keys)
 
 ;; keys
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-c C-c x") 'execute-extended-command)
+
+(global-set-key (kbd "C-c C-m m") 'magit)
+(global-set-key (kbd "C-c C-m s") 'magit-status)
+(global-set-key (kbd "C-c C-m l") 'magit-log)
+
+(global-set-key (kbd "C-c C-w q") 'kill-buffer-and-window)
+(global-set-key (kbd "C-c C-w k") 'kill-buffer)
+(global-set-key (kbd "C-c C-w w") 'quit-window)
+
+(global-set-key (kbd "C-c C-h C-g g") 'helm-git-grep)
+(global-set-key (kbd "C-c C-h f") 'helm-find)
+(global-set-key (kbd "C-c C-h a") 'helm-org-agenda-files-headings)
+(global-set-key (kbd "C-c C-h r") 'helm-recentf)
 
 (global-set-key [C-return] 'save-buffer)
 
@@ -91,53 +125,74 @@
 ;; activate line numbering in all buffers/modes
 (global-display-line-numbers-mode) 
 
-;; Theme
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "tan" :background "gray16"))))
- '(custom-group-tag-face ((t (:underline t foreground "lightblue"))) t)
- '(custom-variable-tag-face ((t (:underline t foreground "lightblue"))) t)
- '(font-lock-builtin-face ((t nil)))
- '(font-lock-comment-face ((t (:foreground "yellow"))))
- '(font-lock-function-name-face ((((class color) (background dark)) (:foreground "white"))))
- '(font-lock-keyword-face ((t (:foreground "white" background "gray16"))))
- '(font-lock-string-face ((t (:foreground "gray160" :background "gray16"))))
- '(font-lock-variable-name-face ((((class color) (background dark)) (:foreground "white"))))
- '(font-lock-warning-face ((t (:bold t foreground "red"))))
- '(header-line ((t (:foreground "yellow" :backround "gray8"))))
- '(header-line-highlight ((t (:foreground "yellow" :backround "gray32"))))
- '(highlight ((t (:foreground "navy blue" :background "darkseagreen2"))))
- '(line-number-current-line ((t (:inherit line-number :foreground "yellow"))))
- '(mode-line ((t (:inverse-video t))))
- '(region ((t (:background "blue"))))
- '(widget-field-face ((t (:foreground "white" :background "darkgray"))) t)
- '(widget-single-line-field-face ((t (:background "darkgray"))) t))
+;; use org-bullets-mode for utf8 symbols as org bullets
+(require 'org-bullets)
+;; make available "org-bullet-face" such that I can control the font size individually
+(setq org-bullets-face-name (quote org-bullet-face))
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(setq org-bullets-bullet-list '("○" "☉" "◎" "◉" "○" "◌" "◎" "●" "◦" "◯" "⚪" "⚫" "⚬" "❍" "￮" "⊙" "⊚" "⊛" "∙" "∘"))
 
-(global-font-lock-mode 1)
-(set-cursor-color "lightgreen")
-(set-background-color "gray16")
+;; ================================================
+;; ================ Theme =========================
+;; ================================================
 
-;(set-face-font 'modeline "Lucida Console: Regular:14")
-;(set-face-font 'modeline "7x14")
-;(set-default-font "7x14")
-;(set-default-font "-monotype-courier new-medium-r-normal--0-0-0-0-m-0-ascii-0")
-;(set-default-font "-b&h-lucida console-medium-r-semi condensed--0-0-0-0-m-0-ascii-0")
-;(set-default-font "-*-Fixedsys-r-*-*-*-*-*-*-*-*-*-ansi-")
-;(set-face-attribute 'default nil font "Anonymous Pro-14")
-(set-face-attribute 'default nil :font "Consolas-13")
 
-(set-face-foreground 'font-lock-builtin-face        "lightgreen")
-;(set-face-foreground 'font-lock-constant-face      "darkred")
-;(set-face-foreground 'font-lock-function-name-face "cyan3")
-;(set-face-foreground 'font-lock-string-face        "dodgerblue")
-;(set-face-foreground 'font-lock-type-face          "green3")
-;(set-face-foreground 'font-lock-variable-name-face "coral")
+;;;;;;;;;;;;
+;; https://github.com/rexim/gruber-darker-theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/gruber-darker-theme")
+;; use M-x customize-themes to change theme
+;;;;;;;;;;;;
 
-(hl-line-mode)
-(set-face-attribute 'hl-line nil :inherit nil :background "#404040")
+;;;;;;;;;;; Jonathan Blow inspired theme
+;(custom-set-faces
+; ;; custom-set-faces was added by Custom.
+; ;; If you edit it by hand, you could mess it up, so be careful.
+; ;; Your init file should contain only one such instance.
+; ;; If there is more than one, they won't work right.
+; '(default ((t (:foreground "tan" :background "gray16"))))
+; '(custom-group-tag-face ((t (:underline t foreground "lightblue"))) t)
+; '(custom-variable-tag-face ((t (:underline t foreground "lightblue"))) t)
+; '(font-lock-builtin-face ((t nil)))
+; '(font-lock-comment-face ((t (:foreground "yellow"))))
+; '(font-lock-function-name-face ((((class color) (background dark)) (:foreground "white"))))
+; '(font-lock-keyword-face ((t (:foreground "white" background "gray16"))))
+; '(font-lock-string-face ((t (:foreground "gray160" :background "gray16"))))
+; '(font-lock-variable-name-face ((((class color) (background dark)) (:foreground "white"))))
+; '(font-lock-warning-face ((t (:bold t foreground "red"))))
+; '(header-line ((t (:foreground "yellow" :backround "gray8"))))
+; '(header-line-highlight ((t (:foreground "yellow" :backround "gray32"))))
+; '(highlight ((t (:foreground "navy blue" :background "darkseagreen2"))))
+; '(line-number-current-line ((t (:inherit line-number :foreground "yellow"))))
+; '(mode-line ((t (:inverse-video t))))
+; '(region ((t (:background "blue"))))
+; '(widget-field-face ((t (:foreground "white" :background "darkgray"))) t)
+; '(widget-single-line-field-face ((t (:background "darkgray"))) t))
+
+;(global-font-lock-mode 1)
+;(set-cursor-color "lightgreen")
+;(set-background-color "gray16")
+
+;;(set-face-font 'modeline "Lucida Console: Regular:14")
+;;(set-face-font 'modeline "7x14")
+;;(set-default-font "7x14")
+;;(set-default-font "-monotype-courier new-medium-r-normal--0-0-0-0-m-0-ascii-0")
+;;(set-default-font "-b&h-lucida console-medium-r-semi condensed--0-0-0-0-m-0-ascii-0")
+;;(set-default-font "-*-Fixedsys-r-*-*-*-*-*-*-*-*-*-ansi-")
+;;(set-face-attribute 'default nil font "Anonymous Pro-14")
+;(set-face-attribute 'default nil :font "Consolas-13")
+
+;(set-face-foreground 'font-lock-builtin-face        "lightgreen")
+;;(set-face-foreground 'font-lock-constant-face      "darkred")
+;;(set-face-foreground 'font-lock-function-name-face "cyan3")
+;;(set-face-foreground 'font-lock-string-face        "dodgerblue")
+;;(set-face-foreground 'font-lock-type-face          "green3")
+;;(set-face-foreground 'font-lock-variable-name-face "coral")
+
+;(hl-line-mode)
+;(set-face-attribute 'hl-line nil :inherit nil :background "#404040")
+;; ================================================
+;; ================================================
+;; ================================================
 
 ;(Setq c-font-lock-keywords c-font-lock-keywords-2
 ;      c++-font-lock-keywords c++-font-lock-keywords-2
@@ -148,6 +203,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("ba4ab079778624e2eadbdc5d9345e6ada531dc3febeb24d257e6d31d5ed02577" default))
  '(package-selected-packages
-   '(magit rust-mode undo-fu undo-tree dap-mode lsp-ivy helm-lsp company lsp-treemacs flycheck lsp-ui lsp-mode auto-complete evil))
+   '(gruber-darker-theme org-bullets use-package ox-hugo helm-org helm-ls-git helm-git-grep helm-cmd-t multiple-cursors smex nim-mode zig-mode magit rust-mode undo-fu undo-tree dap-mode lsp-ivy helm-lsp company lsp-treemacs flycheck lsp-ui lsp-mode auto-complete evil))
  '(warning-suppress-types '((lsp-mode))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
