@@ -25,8 +25,7 @@
 ;; lsp-mode
 (setq lsp-keymap-prefix "C-c l")
 (require 'lsp-mode)
-;(require 'lsp-clients)
-;(setq lsp-zig-zls-executable "/opt/zls/bin/zls")
+(setq lsp-zig-zls-executable "/opt/zls/bin/zls")
 (add-hook 'prog-mode-hook #'lsp)
 
 ;; company
@@ -70,18 +69,18 @@
 (add-to-list 'load-path "~/.emacs.d/modes/")
 
 ;; Odin Mode -- https://github.com/mattt-b/odin-mode
-(require 'odin-mode)
-(add-to-list 'auto-mode-alist '("\\.odin\\'" . odin-mode))
+;(require 'odin-mode)
+;(add-to-list 'auto-mode-alist '("\\.odin\\'" . odin-mode))
 
 ;; With odin-mode (https://github.com/mattt-b/odin-mode) and lsp-mode already added to your init.el of course!.
-(setq-default lsp-auto-guess-root t) ;; if you work with Projectile/project.el this will help find the ols.json file.
-(defvar lsp-language-id-configuration '((odin-mode . "odin")))
-(lsp-register-client
- (make-lsp-client :new-connection (lsp-stdio-connection "~/src/thirdparty/ols/ols")
-                  :major-modes '(odin-mode)
-                  :server-id 'ols
-                  :multi-root t)) ;; This is just so lsp-mode sends the "workspaceFolders" param to the server.
-(add-hook 'odin-mode-hook #'lsp)
+;(setq-default lsp-auto-guess-root t) ;; if you work with Projectile/project.el this will help find the ols.json file.
+;(defvar lsp-language-id-configuration '((odin-mode . "odin")))
+;(lsp-register-client
+; (make-lsp-client :new-connection (lsp-stdio-connection "~/src/thirdparty/ols/ols")
+;                  :major-modes '(odin-mode)
+;                  :server-id 'ols
+;                  :multi-root t)) ;; This is just so lsp-mode sends the "workspaceFolders" param to the server.
+;(add-hook 'odin-mode-hook #'lsp)
 
 ;; Drag Stuff
 (add-to-list 'load-path "~/.emacs.d/drag-stuff/")
@@ -275,7 +274,7 @@
  '(gdb-many-windows t)
  '(gdb-show-main t)
  '(package-selected-packages
-   '(haskell-mode exec-path-from-shell gruber-darker-theme org-bullets use-package ox-hugo helm-org helm-ls-git helm-git-grep helm-cmd-t multiple-cursors smex nim-mode zig-mode magit rust-mode undo-fu undo-tree dap-mode lsp-ivy helm-lsp company lsp-treemacs flycheck lsp-ui lsp-mode auto-complete evil))
+   '(nasm-mode haskell-mode exec-path-from-shell gruber-darker-theme org-bullets use-package ox-hugo helm-org helm-ls-git helm-git-grep helm-cmd-t multiple-cursors smex nim-mode zig-mode magit rust-mode undo-fu undo-tree dap-mode lsp-ivy helm-lsp company lsp-treemacs flycheck lsp-ui lsp-mode auto-complete evil))
  '(warning-suppress-types '((lsp-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
