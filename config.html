@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-03-18 Sat 14:11 -->
+<!-- 2023-03-18 Sat 18:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs Config</title>
@@ -202,35 +202,34 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf6e4637">1. Introduction</a></li>
-<li><a href="#org282c7b6">2. The Config</a>
+<li><a href="#orgccc80d5">1. Introduction</a></li>
+<li><a href="#orge597af9">2. The Config</a>
 <ul>
-<li><a href="#orgafab501">2.1. Initialize melpa</a></li>
-<li><a href="#org3636c06">2.2. Install dependencies</a></li>
-<li><a href="#org4e478c1">2.3. Setup line numbers</a></li>
-<li><a href="#orgf6d8231">2.4. Set Font</a></li>
-<li><a href="#org8296060">2.5. Hide Tool Bar</a></li>
-<li><a href="#org2898123">2.6. Org Bullets</a></li>
-<li><a href="#org41a2669">2.7. Setup lsp stuff</a></li>
-<li><a href="#orgff8abaa">2.8. Setup company</a></li>
-<li><a href="#org0053892">2.9. Setup ivy</a></li>
-<li><a href="#org07e44e1">2.10. Setup drag stuff</a></li>
-<li><a href="#orgb73dd49">2.11. Scrolling and tab width</a></li>
-<li><a href="#orgbffadf3">2.12. Misc Settings</a></li>
-<li><a href="#orgd451845">2.13. Disable various files I don't want (~, .#, #)</a></li>
-<li><a href="#org03630d2">2.14. Set C tab offset</a></li>
-<li><a href="#org86313d3">2.15. Make emacs split vertically if no direction is specified</a></li>
-<li><a href="#orgb768686">2.16. Make emacs know what we have in path</a></li>
-<li><a href="#orgea13013">2.17. Theme</a></li>
-<li><a href="#org0c637e9">2.18. Custom Keybinds</a></li>
+<li><a href="#org3ce6577">2.1. Initialize melpa</a></li>
+<li><a href="#org9a46186">2.2. Install dependencies</a></li>
+<li><a href="#orgc2ccdfb">2.3. Setup line numbers</a></li>
+<li><a href="#org48668bb">2.4. Set Font</a></li>
+<li><a href="#org0c9ec12">2.5. Hide Tool Bar</a></li>
+<li><a href="#orgbc7425d">2.6. Org Bullets</a></li>
+<li><a href="#org0cf91eb">2.7. Setup lsp stuff</a></li>
+<li><a href="#orgadb44a6">2.8. Setup company</a></li>
+<li><a href="#org942dd6a">2.9. Setup ivy</a></li>
+<li><a href="#org0286527">2.10. Setup drag stuff</a></li>
+<li><a href="#org545f971">2.11. Scrolling and tab width</a></li>
+<li><a href="#org77d2bb6">2.12. Misc Settings</a></li>
+<li><a href="#orge6f7ca6">2.13. Disable various files I don't want (~, .#, #)</a></li>
+<li><a href="#org03b1e69">2.14. Set C tab offset</a></li>
+<li><a href="#org5da4464">2.15. Make emacs split vertically if no direction is specified</a></li>
+<li><a href="#org8d69029">2.16. Make emacs know what we have in path</a></li>
+<li><a href="#orgb717a1f">2.17. Custom Keybinds</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf6e4637" class="outline-2">
-<h2 id="orgf6e4637"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-orgccc80d5" class="outline-2">
+<h2 id="orgccc80d5"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This is my emacs config&#x2026;
@@ -245,12 +244,12 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-org282c7b6" class="outline-2">
-<h2 id="org282c7b6"><span class="section-number-2">2.</span> The Config</h2>
+<div id="outline-container-orge597af9" class="outline-2">
+<h2 id="orge597af9"><span class="section-number-2">2.</span> The Config</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgafab501" class="outline-3">
-<h3 id="orgafab501"><span class="section-number-3">2.1.</span> Initialize melpa</h3>
+<div id="outline-container-org3ce6577" class="outline-3">
+<h3 id="org3ce6577"><span class="section-number-3">2.1.</span> Initialize melpa</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(require 'package)
@@ -261,8 +260,8 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-org3636c06" class="outline-3">
-<h3 id="org3636c06"><span class="section-number-3">2.2.</span> Install dependencies</h3>
+<div id="outline-container-org9a46186" class="outline-3">
+<h3 id="org9a46186"><span class="section-number-3">2.2.</span> Install dependencies</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(unless (package-installed-p 'use-package)
@@ -292,8 +291,8 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-org4e478c1" class="outline-3">
-<h3 id="org4e478c1"><span class="section-number-3">2.3.</span> Setup line numbers</h3>
+<div id="outline-container-orgc2ccdfb" class="outline-3">
+<h3 id="orgc2ccdfb"><span class="section-number-3">2.3.</span> Setup line numbers</h3>
 <div class="outline-text-3" id="text-2-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(setq-default display-line-numbers 'relative
@@ -303,8 +302,8 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-orgf6d8231" class="outline-3">
-<h3 id="orgf6d8231"><span class="section-number-3">2.4.</span> Set Font</h3>
+<div id="outline-container-org48668bb" class="outline-3">
+<h3 id="org48668bb"><span class="section-number-3">2.4.</span> Set Font</h3>
 <div class="outline-text-3" id="text-2-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(set-face-attribute 'default nil :font "Hack 14")
@@ -313,8 +312,8 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-org8296060" class="outline-3">
-<h3 id="org8296060"><span class="section-number-3">2.5.</span> Hide Tool Bar</h3>
+<div id="outline-container-org0c9ec12" class="outline-3">
+<h3 id="org0c9ec12"><span class="section-number-3">2.5.</span> Hide Tool Bar</h3>
 <div class="outline-text-3" id="text-2-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(tool-bar-mode -1)
@@ -323,8 +322,8 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-org2898123" class="outline-3">
-<h3 id="org2898123"><span class="section-number-3">2.6.</span> Org Bullets</h3>
+<div id="outline-container-orgbc7425d" class="outline-3">
+<h3 id="orgbc7425d"><span class="section-number-3">2.6.</span> Org Bullets</h3>
 <div class="outline-text-3" id="text-2-6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(use-package org-bullets
@@ -336,8 +335,8 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-org41a2669" class="outline-3">
-<h3 id="org41a2669"><span class="section-number-3">2.7.</span> Setup lsp stuff</h3>
+<div id="outline-container-org0cf91eb" class="outline-3">
+<h3 id="org0cf91eb"><span class="section-number-3">2.7.</span> Setup lsp stuff</h3>
 <div class="outline-text-3" id="text-2-7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(setq lsp-keymap-prefix "C-c l")
@@ -348,8 +347,8 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-orgff8abaa" class="outline-3">
-<h3 id="orgff8abaa"><span class="section-number-3">2.8.</span> Setup company</h3>
+<div id="outline-container-orgadb44a6" class="outline-3">
+<h3 id="orgadb44a6"><span class="section-number-3">2.8.</span> Setup company</h3>
 <div class="outline-text-3" id="text-2-8">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(add-hook 'after-init-hook 'global-company-mode)
@@ -358,8 +357,8 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-org0053892" class="outline-3">
-<h3 id="org0053892"><span class="section-number-3">2.9.</span> Setup ivy</h3>
+<div id="outline-container-org942dd6a" class="outline-3">
+<h3 id="org942dd6a"><span class="section-number-3">2.9.</span> Setup ivy</h3>
 <div class="outline-text-3" id="text-2-9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(ivy-mode 1)
@@ -368,8 +367,8 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-org07e44e1" class="outline-3">
-<h3 id="org07e44e1"><span class="section-number-3">2.10.</span> Setup drag stuff</h3>
+<div id="outline-container-org0286527" class="outline-3">
+<h3 id="org0286527"><span class="section-number-3">2.10.</span> Setup drag stuff</h3>
 <div class="outline-text-3" id="text-2-10">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(require 'drag-stuff)
@@ -381,8 +380,8 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-orgb73dd49" class="outline-3">
-<h3 id="orgb73dd49"><span class="section-number-3">2.11.</span> Scrolling and tab width</h3>
+<div id="outline-container-org545f971" class="outline-3">
+<h3 id="org545f971"><span class="section-number-3">2.11.</span> Scrolling and tab width</h3>
 <div class="outline-text-3" id="text-2-11">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(setq-default tab-width 4)
@@ -393,8 +392,8 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-orgbffadf3" class="outline-3">
-<h3 id="orgbffadf3"><span class="section-number-3">2.12.</span> Misc Settings</h3>
+<div id="outline-container-org77d2bb6" class="outline-3">
+<h3 id="org77d2bb6"><span class="section-number-3">2.12.</span> Misc Settings</h3>
 <div class="outline-text-3" id="text-2-12">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(setq org-image-actual-width nil)
@@ -406,8 +405,8 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-orgd451845" class="outline-3">
-<h3 id="orgd451845"><span class="section-number-3">2.13.</span> Disable various files I don't want (~, .#, #)</h3>
+<div id="outline-container-orge6f7ca6" class="outline-3">
+<h3 id="orge6f7ca6"><span class="section-number-3">2.13.</span> Disable various files I don't want (~, .#, #)</h3>
 <div class="outline-text-3" id="text-2-13">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(setq make-backup-files nil)
@@ -418,8 +417,8 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-org03630d2" class="outline-3">
-<h3 id="org03630d2"><span class="section-number-3">2.14.</span> Set C tab offset</h3>
+<div id="outline-container-org03b1e69" class="outline-3">
+<h3 id="org03b1e69"><span class="section-number-3">2.14.</span> Set C tab offset</h3>
 <div class="outline-text-3" id="text-2-14">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(setq-default c-basic-offset 4)
@@ -428,8 +427,8 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-org86313d3" class="outline-3">
-<h3 id="org86313d3"><span class="section-number-3">2.15.</span> Make emacs split vertically if no direction is specified</h3>
+<div id="outline-container-org5da4464" class="outline-3">
+<h3 id="org5da4464"><span class="section-number-3">2.15.</span> Make emacs split vertically if no direction is specified</h3>
 <div class="outline-text-3" id="text-2-15">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(setq split-width-threshold nil)
@@ -438,8 +437,8 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-orgb768686" class="outline-3">
-<h3 id="orgb768686"><span class="section-number-3">2.16.</span> Make emacs know what we have in path</h3>
+<div id="outline-container-org8d69029" class="outline-3">
+<h3 id="org8d69029"><span class="section-number-3">2.16.</span> Make emacs know what we have in path</h3>
 <div class="outline-text-3" id="text-2-16">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(exec-path-from-shell-initialize)
@@ -448,44 +447,9 @@ but explained through org mode
 </div>
 </div>
 
-<div id="outline-container-orgea13013" class="outline-3">
-<h3 id="orgea13013"><span class="section-number-3">2.17.</span> Theme</h3>
+<div id="outline-container-orgb717a1f" class="outline-3">
+<h3 id="orgb717a1f"><span class="section-number-3">2.17.</span> Custom Keybinds</h3>
 <div class="outline-text-3" id="text-2-17">
-<p>
-Slightly changed/fixed version of Jonathan Blow's emacs theme
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(custom-set-faces
- '(default ((t (:foreground "#D3B58D" :background "#041818"))))
- '(custom-group-tag-face ((t (:underline t :foreground "lightblue"))) t)
- '(custom-variable-tag-face ((t (:underline t :foreground "lightblue"))) t)
- '(font-lock-builtin-face ((t nil)))
- '(font-lock-comment-face ((t (:foreground "#3FDF1F"))))
- '(font-lock-function-name-face ((((class color) (background dark)) (:foreground "white"))))
- '(font-lock-keyword-face ((t (:foreground "white"))))
- '(font-lock-string-face ((t (:foreground "#0FDFAF"))))
- '(font-lock-variable-name-face ((((class color) (background dark)) (:foreground "#C8D4EC"))))
- '(font-lock-warning-face ((t (:foreground "#504038"))))
- '(highlight ((t (:foreground "navyblue" :background "darkseagreen2"))))
- '(mode-line ((t (:inverse-video t))))
- '(region ((t (:background "blue"))))
- '(widget-field-face ((t (:foreground "white"))) t)
- '(widget-single-line-field-face ((t (:background "darkgray"))) t))
-
-(global-font-lock-mode 1)
-(set-cursor-color "lightgreen")
-(set-background-color "#072626")
-(global-set-key [C-return] 'save-buffer)
-
-(set-face-foreground 'font-lock-builtin-face         "lightgreen")
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org0c637e9" class="outline-3">
-<h3 id="org0c637e9"><span class="section-number-3">2.18.</span> Custom Keybinds</h3>
-<div class="outline-text-3" id="text-2-18">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(global-set-key (kbd "&lt;C-return&gt;") 'save-buffer)
 
@@ -537,7 +501,7 @@ Slightly changed/fixed version of Jonathan Blow's emacs theme
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: marvhus</p>
-<p class="date">Created: 2023-03-18 Sat 14:11</p>
+<p class="date">Created: 2023-03-18 Sat 18:05</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
