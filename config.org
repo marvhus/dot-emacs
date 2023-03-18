@@ -11,6 +11,7 @@ but explained through org mode
 - *Licence*:  [[https://www.gnu.org/licenses/gpl-3.0.txt][GNU General Public Licence Version 3 (GPLv3)]]
 
 * Dependencies
+- use-package
 - lsp-mpde
 - ivy
 - drag-stuff
@@ -29,11 +30,24 @@ but explained through org mode
 			 '("melpa" . "https://melpa.org/packages/"))
 #+END_SRC
 
-** Initiallize/Install use-package
+** Install dependencies
 #+BEGIN_SRC emacs-lisp :exports code
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+  (defun install-dependecy (dependecy)
+	"Install the given dependecy if it isn't installed"
+	(unless (package-installed dependency)
+	  (package-refresh-contents)
+	  (package-install dependency)))
+
+  (install-dependecy 'use-package)
+  (install-dependecy 'lsp-mode)
+  (install-dependecy 'ivy)
+  (install-dependecy 'drag-stuff)
+  (install-dependecy 'multiple-cursors)
+  (install-dependecy 'undo-fu)
+  (install-dependecy 'company)
+  (install-dependecy 'smex)
+  (install-dependecy 'exec-path-from-shell-initialize)
+  (install-dependecy 'magit)
 #+END_SRC
 
 ** Setup line numbers
