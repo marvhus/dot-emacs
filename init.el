@@ -2,6 +2,9 @@
  (expand-file-name
   "config.org"
   user-emacs-directory))
+
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -9,6 +12,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    '(exec-path-from-shell-initialize use-package undo-fu smex org-bullets multiple-cursors magit lsp-mode ivy exec-path-from-shell drag-stuff company)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -29,3 +33,11 @@
  '(region ((t (:background "blue"))))
  '(widget-field-face ((t (:foreground "white"))) t)
  '(widget-single-line-field-face ((t (:background "darkgray"))) t))
+
+(global-font-lock-mode 1)
+(set-cursor-color "lightgreen")
+(set-background-color "#072626")
+
+(global-set-key [C-return] 'save-buffer)
+
+(set-face-foreground 'font-lock-builtin-face         "lightgreen")
