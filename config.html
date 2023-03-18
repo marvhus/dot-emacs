@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-03-18 Sat 13:24 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emacs Config</title>
+<meta name="author" content="marvhus" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="https://ugeek.github.io/style-css-org-mode/bjm_code.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Emacs Config</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org0342615">1. Introduction</a></li>
+<li><a href="#org4dc6b4a">2. Dependencies</a></li>
+<li><a href="#org6381f64">3. The Config</a>
+<ul>
+<li><a href="#orgd363d2e">3.1. Initialize melpa</a></li>
+<li><a href="#org5a38b54">3.2. Initiallize/Install use-package</a></li>
+<li><a href="#org27ec255">3.3. Setup line numbers</a></li>
+<li><a href="#orgab4d7c8">3.4. Set Font</a></li>
+<li><a href="#org98a3ec6">3.5. Hide Tool Bar</a></li>
+<li><a href="#org3573c76">3.6. Org Bullets</a></li>
+<li><a href="#org4dc00e5">3.7. Setup lsp stuff</a></li>
+<li><a href="#org18fc5dc">3.8. Setup company</a></li>
+<li><a href="#org5c84283">3.9. Setup ivy</a></li>
+<li><a href="#org22260d0">3.10. Setup drag stuff</a></li>
+<li><a href="#org898d11f">3.11. Scrolling and tab width</a></li>
+<li><a href="#org3fc8baa">3.12. Misc Settings</a></li>
+<li><a href="#orgd264352">3.13. Disable various files I don't want (~, .#, #)</a></li>
+<li><a href="#org9f5ed37">3.14. Set C tab offset</a></li>
+<li><a href="#org5c5c7b3">3.15. Make emacs split vertically if no direction is specified</a></li>
+<li><a href="#org0ef413a">3.16. Make emacs know what we have in path</a></li>
+<li><a href="#org14bf431">3.17. Theme</a></li>
+<li><a href="#org0ea04b2">3.18. Custom Keybinds</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0342615" class="outline-2">
+<h2 id="org0342615"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This is my emacs config&#x2026;
+but explained through org mode
+</p>
+
+<ul class="org-ul">
+<li><b>Author</b>:   marvhus</li>
+<li><b>Created</b>:  18-03-2023</li>
+<li><b>Licence</b>:  <a href="https://www.gnu.org/licenses/gpl-3.0.txt">GNU General Public Licence Version 3 (GPLv3)</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4dc6b4a" class="outline-2">
+<h2 id="org4dc6b4a"><span class="section-number-2">2.</span> Dependencies</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>lsp-mpde</li>
+<li>ivy</li>
+<li>drag-stuff</li>
+<li>multiple-cursors</li>
+<li>undo-fu</li>
+<li>company</li>
+<li>smex</li>
+<li>exec-path-from-shell-initialize</li>
+<li>magit (not in config but I use it)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6381f64" class="outline-2">
+<h2 id="org6381f64"><span class="section-number-2">3.</span> The Config</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgd363d2e" class="outline-3">
+<h3 id="orgd363d2e"><span class="section-number-3">3.1.</span> Initialize melpa</h3>
+<div class="outline-text-3" id="text-3-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(require 'package)
+(add-to-list 'package-archives
+			 '("melpa" . "https://melpa.org/packages/"))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5a38b54" class="outline-3">
+<h3 id="org5a38b54"><span class="section-number-3">3.2.</span> Initiallize/Install use-package</h3>
+<div class="outline-text-3" id="text-3-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org27ec255" class="outline-3">
+<h3 id="org27ec255"><span class="section-number-3">3.3.</span> Setup line numbers</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq-default display-line-numbers 'relative
+			  display-line-numbers-current-absolute t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgab4d7c8" class="outline-3">
+<h3 id="orgab4d7c8"><span class="section-number-3">3.4.</span> Set Font</h3>
+<div class="outline-text-3" id="text-3-4">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(set-face-attribute 'default nil :font "Hack 14")
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org98a3ec6" class="outline-3">
+<h3 id="org98a3ec6"><span class="section-number-3">3.5.</span> Hide Tool Bar</h3>
+<div class="outline-text-3" id="text-3-5">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(tool-bar-mode -1)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3573c76" class="outline-3">
+<h3 id="org3573c76"><span class="section-number-3">3.6.</span> Org Bullets</h3>
+<div class="outline-text-3" id="text-3-6">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4dc00e5" class="outline-3">
+<h3 id="org4dc00e5"><span class="section-number-3">3.7.</span> Setup lsp stuff</h3>
+<div class="outline-text-3" id="text-3-7">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq lsp-keymap-prefix "C-c l")
+(require 'lsp-mode)
+(add-hook 'prog-mode-hook #'lsp)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org18fc5dc" class="outline-3">
+<h3 id="org18fc5dc"><span class="section-number-3">3.8.</span> Setup company</h3>
+<div class="outline-text-3" id="text-3-8">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(add-hook 'after-init-hook 'global-company-mode)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5c84283" class="outline-3">
+<h3 id="org5c84283"><span class="section-number-3">3.9.</span> Setup ivy</h3>
+<div class="outline-text-3" id="text-3-9">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(ivy-mode 1)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org22260d0" class="outline-3">
+<h3 id="org22260d0"><span class="section-number-3">3.10.</span> Setup drag stuff</h3>
+<div class="outline-text-3" id="text-3-10">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(require 'drag-stuff)
+(drag-stuff-mode t)
+(drag-stuff-global-mode 1)
+(drag-stuff-define-keys)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org898d11f" class="outline-3">
+<h3 id="org898d11f"><span class="section-number-3">3.11.</span> Scrolling and tab width</h3>
+<div class="outline-text-3" id="text-3-11">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq-default tab-width 4)
+(setq scroll-margin 20)
+(setq scroll-conservatively 101)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3fc8baa" class="outline-3">
+<h3 id="org3fc8baa"><span class="section-number-3">3.12.</span> Misc Settings</h3>
+<div class="outline-text-3" id="text-3-12">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq org-image-actual-width nil)
+(setq calendar-week-start-day 1)
+(setq column-number-mode t)
+(setq scroll-bar-mode 0)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd264352" class="outline-3">
+<h3 id="orgd264352"><span class="section-number-3">3.13.</span> Disable various files I don't want (~, .#, #)</h3>
+<div class="outline-text-3" id="text-3-13">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq make-backup-files nil)
+(setq create-lockfiles nil) 
+(setq make-backup-files nil)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9f5ed37" class="outline-3">
+<h3 id="org9f5ed37"><span class="section-number-3">3.14.</span> Set C tab offset</h3>
+<div class="outline-text-3" id="text-3-14">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq-default c-basic-offset 4)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5c5c7b3" class="outline-3">
+<h3 id="org5c5c7b3"><span class="section-number-3">3.15.</span> Make emacs split vertically if no direction is specified</h3>
+<div class="outline-text-3" id="text-3-15">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq split-width-threshold nil)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0ef413a" class="outline-3">
+<h3 id="org0ef413a"><span class="section-number-3">3.16.</span> Make emacs know what we have in path</h3>
+<div class="outline-text-3" id="text-3-16">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(exec-path-from-shell-initialize)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org14bf431" class="outline-3">
+<h3 id="org14bf431"><span class="section-number-3">3.17.</span> Theme</h3>
+<div class="outline-text-3" id="text-3-17">
+<p>
+Slightly changed/fixed version of Jonathan Blow's emacs theme
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(custom-set-faces
+ '(default ((t (:foreground "#D3B58D" :background "#041818"))))
+ '(custom-group-tag-face ((t (:underline t :foreground "lightblue"))) t)
+ '(custom-variable-tag-face ((t (:underline t :foreground "lightblue"))) t)
+ '(font-lock-builtin-face ((t nil)))
+ '(font-lock-comment-face ((t (:foreground "#3FDF1F"))))
+ '(font-lock-function-name-face ((((class color) (background dark)) (:foreground "white"))))
+ '(font-lock-keyword-face ((t (:foreground "white"))))
+ '(font-lock-string-face ((t (:foreground "#0FDFAF"))))
+ '(font-lock-variable-name-face ((((class color) (background dark)) (:foreground "#C8D4EC"))))
+ '(font-lock-warning-face ((t (:foreground "#504038"))))
+ '(highlight ((t (:foreground "navyblue" :background "darkseagreen2"))))
+ '(mode-line ((t (:inverse-video t))))
+ '(region ((t (:background "blue"))))
+ '(widget-field-face ((t (:foreground "white"))) t)
+ '(widget-single-line-field-face ((t (:background "darkgray"))) t))
+
+(global-font-lock-mode 1)
+(set-cursor-color "lightgreen")
+(set-background-color "#072626")
+(global-set-key [C-return] 'save-buffer)
+
+(set-face-foreground 'font-lock-builtin-face         "lightgreen")
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0ea04b2" class="outline-3">
+<h3 id="org0ea04b2"><span class="section-number-3">3.18.</span> Custom Keybinds</h3>
+<div class="outline-text-3" id="text-3-18">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(global-set-key (kbd "&lt;C-return&gt;") 'save-buffer)
+
+(global-set-key (kbd "C-c r") 'recompile)
+(global-set-key (kbd "C-c c") 'compile)
+
+(global-set-key (kbd "C-c v") 'split-window-right)
+(global-set-key (kbd "C-c s") 'split-window-below)
+(global-set-key (kbd "C-c q") 'delete-window)
+
+(global-set-key (kbd "&lt;C-up&gt;")		'shrink-window)
+(global-set-key (kbd "&lt;C-down&gt;")	'enlarge-window)
+(global-set-key (kbd "&lt;C-left&gt;")	'shrink-window-horizontally)
+(global-set-key (kbd "&lt;C-right&gt;")	'enlarge-window-horizontally)
+
+(global-set-key (kbd "C-S-&lt;up&gt;")	'windmove-up)
+(global-set-key (kbd "C-S-&lt;down&gt;")	'windmove-down)
+(global-set-key (kbd "C-S-&lt;left&gt;")	'windmove-left)
+(global-set-key (kbd "C-S-&lt;right&gt;") 'windmove-right)
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-c C-c x") 'execute-extended-command)
+
+(global-set-key (kbd "C-c C-u") 'undo-fu-only-undo)
+(global-set-key (kbd "C-c C-y") 'undo-fu-only-redo)
+
+;; Do What I mean
+(global-set-key (kbd "C-M-j") 'mc/mark-all-dwim)
+
+;; Edit lines
+(global-set-key (kbd "C-M-c") 'mc/edit-lines)
+
+;; Mark
+(global-set-key (kbd "C-M-,") 'mc/mark-previous-like-this) 
+(global-set-key (kbd "C-M-.") 'mc/mark-next-like-this) 
+
+;; Unmark
+(global-set-key (kbd "C-M-n") 'mc/unmark-previous-like-this) 
+(global-set-key (kbd "C-M-m") 'mc/unmark-next-like-this) 
+
+;;; Skip
+(global-set-key (kbd "C-M-&lt;") 'mc/skip-to-previous-like-this)
+(global-set-key (kbd "C-M-&gt;") 'mc/skip-to-next-like-this)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: marvhus</p>
+<p class="date">Created: 2023-03-18 Sat 13:24</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

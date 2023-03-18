@@ -1,0 +1,5 @@
+#+TITLE: .emacs.d
+#+AUTHOR: marvhus
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://ugeek.github.io/style-css-org-mode/bjm_code.css" />
+
+* [[./config.html][Emacs Config]]

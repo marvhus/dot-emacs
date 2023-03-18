@@ -1,6 +1,0 @@
-[submodule "drag-stuff"]
-	path = drag-stuff
-	url = git@github.com:rejeep/drag-stuff.el.git
-[submodule "use-package"]
-	path = use-package
-	url = git@github.com:jwiegley/use-package.git
