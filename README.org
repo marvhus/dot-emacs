@@ -1,7 +1,7 @@
 * Emacs Config
 
 ** You can find the HTML version of the config at:
-- [[./config.html][config.html]]
+- [[https://marvhus.xyz/dot-emacs/config.html][config.html]]
 ** You can find the ORG version of the config at:
 - [[./config.org][config.org]]
 ** You can find the ELisp version of the config at:
